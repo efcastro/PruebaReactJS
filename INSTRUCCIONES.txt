@@ -28,3 +28,6 @@ de una API. Utilizar axios para el llamado del servicio. El URL del servicio es 
 Todas las propiedades de cada objeto del servicio deberán ser renderizadas.
 
 7.) Hacer commit al repositorio de todos los cambios realizados
+
+8.) En un blog de notas hacer un procedimiento almacenado simple, que reciba un parámetro de entrada y tenga uno de salida.
+El cuerpo del procedimiento debe tener un select a una tabla ficticia que retorne el valor en el parámetro de salida.
