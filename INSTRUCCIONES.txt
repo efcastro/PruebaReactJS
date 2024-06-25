@@ -32,4 +32,4 @@ Todas las propiedades de cada objeto del servicio deberán ser renderizadas.
 8.) En un blog de notas hacer un procedimiento almacenado simple, que reciba un parámetro de entrada y tenga uno de salida.
 El cuerpo del procedimiento debe tener un select a una tabla ficticia que retorne el valor en el parámetro de salida.
 
-9.) Crear una api en .NET CORE que tenga un servicio web que retorne un json. 
+9.) Crear una api en .NET CORE que tenga un servicio web que retorne un json con un arreglo de objetos. Subir la api a un nuevo repositorio en github y darle acceso al correo efcastro97@gmail.com
