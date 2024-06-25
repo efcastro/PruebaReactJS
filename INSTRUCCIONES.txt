@@ -27,7 +27,9 @@ Esta pantalla y la anterior deberán ser accesibles agregando su respectiva ruta
 de una API. Utilizar axios para el llamado del servicio. El URL del servicio es el siguiente: GET https://5f295253-dbd0-4746-ad69-2224581d2e1e.mock.pstmn.io/obtenerEmpleados
 Todas las propiedades de cada objeto del servicio deberán ser renderizadas.
 
-7.) Hacer commit al repositorio de todos los cambios realizados
+7.) Hacer commit al repositorio de todos los cambios realizados en una NUEVA rama con su nombre.
 
 8.) En un blog de notas hacer un procedimiento almacenado simple, que reciba un parámetro de entrada y tenga uno de salida.
 El cuerpo del procedimiento debe tener un select a una tabla ficticia que retorne el valor en el parámetro de salida.
+
+9.) Crear una api en .NET CORE que tenga un servicio web que retorne un json. 
