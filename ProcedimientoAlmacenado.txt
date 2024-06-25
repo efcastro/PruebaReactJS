@@ -1,0 +1,10 @@
+CREATE PROCEDURE ObtenerDatos(
+  @ParametroEntrada INT,
+  @ParametroSalida VARCHAR(100) OUTPUT
+)
+AS
+BEGIN
+  SELECT @ParametroSalida = Nombre
+  FROM TablaFicticia
+  WHERE ID = @ParametroEntrada
+END
