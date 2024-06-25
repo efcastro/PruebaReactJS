@@ -1,0 +1,30 @@
+1.) Crear una nueva pantalla en la carpeta pages. Debe estar estructurada de la siguiente forma: 
+La raiz de la pantalla debe solo contener las bases de la misma y hacer llamado a un componente (explicado en el punto 2)
+adentro de la misma carpeta la cual contendra la lógica en sí de la pantalla. La raíz de la pantalla
+deberá tener una constante del tipo arreglo de objetos con la estructura [{id: 1, nombre:"Manzana"}].
+La constante deberá tener 5 objetos.
+
+2.) Crear un nuevo componente adentro de la misma carpeta. Este componente deberá recibir como prop el 
+arreglo de objetos creado en el punto 1. En el render del componente deberá iterar el arreglo de objetos
+y renderizar una etiqueta HTML.
+
+Ejemplo de como debería de verse en pantalla:
+
+Objeto 1
+Objeto 2
+Objeto 3
+Objeto 4
+Objeto 5
+
+3.) Agregar al App.jsx la lógica respectiva para enrutamiento utilizando la librería react-router-dom
+
+4.) Crear una nueva pantalla adentro de pages. Esta pantalla deberá tener un contenido simple como un título nada más.
+Esta pantalla y la anterior deberán ser accesibles agregando su respectiva ruta en el URL del navegador.
+
+5.) En la pantalla del punto 1 agregar un botón que redireccione a la pantalla del punto 4. Utilizar react-router-dom.
+
+6.) En la pantalla del punto 1 agregar una nueva iteración de un arreglo de objetos el cual debe de venir de un servicio 
+de una API. Utilizar axios para el llamado del servicio. El URL del servicio es el siguiente: GET https://5f295253-dbd0-4746-ad69-2224581d2e1e.mock.pstmn.io/obtenerEmpleados
+Todas las propiedades de cada objeto del servicio deberán ser renderizadas.
+
+7.) Hacer commit al repositorio de todos loas cambios
