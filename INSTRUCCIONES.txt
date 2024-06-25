@@ -27,4 +27,4 @@ Esta pantalla y la anterior deberán ser accesibles agregando su respectiva ruta
 de una API. Utilizar axios para el llamado del servicio. El URL del servicio es el siguiente: GET https://5f295253-dbd0-4746-ad69-2224581d2e1e.mock.pstmn.io/obtenerEmpleados
 Todas las propiedades de cada objeto del servicio deberán ser renderizadas.
 
-7.) Hacer commit al repositorio de todos loas cambios
+7.) Hacer commit al repositorio de todos los cambios relizados
