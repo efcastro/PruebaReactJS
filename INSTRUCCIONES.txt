@@ -1,24 +1,27 @@
+Nota: Se recomienda utilizar MUI (Material UI). 
+
 1.) Crear una nueva pantalla en la carpeta pages. Debe estar estructurada de la siguiente forma: 
 La raiz de la pantalla debe solo contener las bases de la misma y hacer llamado a un componente (explicado en el punto 2)
 adentro de la misma carpeta la cual contendra la lógica en sí de la pantalla. La raíz de la pantalla
-deberá tener una constante del tipo arreglo de objetos con la estructura [{id: 1, nombre:"Manzana"}].
+deberá tener una constante del tipo arreglo de objetos con una estructura similar a [{id: 1, nombre:"Manzana"}, {id: 2, nombre:"Pera"}].
 La constante deberá tener 5 objetos.
 
 2.) Crear un nuevo componente adentro de la misma carpeta. Este componente deberá recibir como prop el 
 arreglo de objetos creado en el punto 1. En el render del componente deberá iterar el arreglo de objetos
-y renderizar una etiqueta HTML.
+y renderizar una etiqueta HTML puede ser un <div> o un <p>.
 
 Ejemplo de como debería de verse en pantalla:
 
 Objeto 1
-Objeto 2
-Objeto 3
+Objeto 2 
+Objeto 3 -- El tercer objeto deberá existir en la constante pero no deberá renderizarse. (Filtrar arreglo antes de renderizar)
 Objeto 4
 Objeto 5
 
 3.) Agregar al App.jsx la lógica respectiva para enrutamiento utilizando la librería react-router-dom
 
-4.) Crear una nueva pantalla adentro de pages. Esta pantalla deberá tener un contenido simple como un título nada más.
+4.) Crear una nueva pantalla adentro de pages. Esta pantalla deberá tener un contenido de unos 10 textfields/inputs, estos inputs no deberán ser agregados uno a uno manualmente.
+Deberá utilizar un loop para pintar varios.
 Esta pantalla y la anterior deberán ser accesibles agregando su respectiva ruta en el URL del navegador.
 
 5.) En la pantalla del punto 1 agregar un botón que redireccione a la pantalla del punto 4. Utilizar react-router-dom.
@@ -27,9 +30,59 @@ Esta pantalla y la anterior deberán ser accesibles agregando su respectiva ruta
 de una API. Utilizar axios para el llamado del servicio. El URL del servicio es el siguiente: GET https://5f295253-dbd0-4746-ad69-2224581d2e1e.mock.pstmn.io/obtenerEmpleados
 Todas las propiedades de cada objeto del servicio deberán ser renderizadas.
 
-7.) Hacer commit al repositorio de todos los cambios realizados en una NUEVA rama con su nombre.
+7.) En PROCEDIMIENTO ALMACENADO.txt hacer un procedimiento almacenado el cual debe recibir un parámetro de entrada (Codigo de la tabla ListaLotes) y debe tener uno de salida.
 
-8.) En un blog de notas hacer un procedimiento almacenado simple, que reciba un parámetro de entrada y tenga uno de salida.
-El cuerpo del procedimiento debe tener un select a una tabla ficticia que retorne el valor en el parámetro de salida.
+//Tabla de referencia
+CREATE TABLE lotes.ListaLotes (
+	Codigo int IDENTITY NOT NULL,
+	NumeroLote varchar(200) NOT NULL,
+	FKCodigoProyecto int NOT NULL,
+	AreaM2 varchar(256) NULL,
+	AreaV2 varchar(256) NULL,
+	PrecioVara decimal(18,4) NULL,
+	CantidadPinos int NULL,
+	Vista bit NULL,
+	UrlImagen varchar(MAX) NULL,
+	UrlUbicacion varchar(MAX) NULL,
+	FKTopografiaLote int NULL,
+	FKEstadoLote int NOT NULL,
+	PorcentajePendiente varchar(10) NULL,
+	ElevacionMax decimal(7,2) NULL,
+	NivelSobreCalle int NULL,
+	CONSTRAINT PK__ListaLote_Prim PRIMARY KEY (Codigo),
+	CONSTRAINT Unique_NumeroLote_FKCodigoProyecto UNIQUE (NumeroLote,FKCodigoProyecto)
+);
 
-9.) Crear una api en .NET CORE que tenga un servicio web que retorne un json con un arreglo de objetos. Subir la api a un nuevo repositorio en github y darle acceso al correo efcastro97@gmail.com
+ALTER TABLE lotes.ListaLotes ADD CONSTRAINT FK__ListaLote__FKCod__41EDCAC5 FOREIGN KEY (FKCodigoProyecto) REFERENCES proy.Proyectos(Codigo);
+ALTER TABLE lotes.ListaLotes ADD CONSTRAINT FK__ListaLote__FKEst__42E1EEFE FOREIGN KEY (FKEstadoLote) REFERENCES lotes.EstadoLotes(Codigo);
+ALTER TABLE lotes.ListaLotes ADD CONSTRAINT FK__ListaLote__FKTop__43D61337 FOREIGN KEY (FKTopografiaLote) REFERENCES lotes.TopografiaLote(Codigo);
+
+CREATE TABLE lotes.ImagenesLote (
+	Codigo int IDENTITY(1,1) NOT NULL,
+	FKCodigoLote int NOT NULL,
+	FKCodigoTipoImagen int NOT NULL,
+	Nombre varchar(200) NOT NULL,
+	Url varchar(MAX) NOT NULL,
+	Ruta varchar(MAX) NOT NULL,
+	CONSTRAINT PK__Imagenes__06370DADA9A81149 PRIMARY KEY (Codigo)
+);
+
+ALTER TABLE lotes.ImagenesLote ADD CONSTRAINT FK_ImagenesLote_ListaLotes FOREIGN KEY (FKCodigoLote) REFERENCES lotes.ListaLotes(Codigo);
+ALTER TABLE lotes.ImagenesLote ADD CONSTRAINT FK_ImagenesLote_TipoImagen FOREIGN KEY (FKCodigoTipoImagen) REFERENCES cat.TipoImagen(Codigo);
+--------------------------------------------------------------------------------------------------------------------------------------------------
+El procedimiento debe tener una consulta que incluya todos los campos de la tabla lotes.ListaLotes. El campo Vista al ser un BIT solo retorna 1 o 0, ese 
+campo deberá retornar Sí cuando sea 1 y No cuando sea 0.
+Tambien agregar a la consulta un campo calculado, AreaV2 multiplicado por PrecioVara, el total deberá redondearse a una precisión de dos decimales.
+
+Agregar un nuevo campo a la consulta para mostrar un listado de imagenes de la tabla lotes.ImagenesLote, cada lote puede tener N numero de imagenes.
+
+La consulta debe responder con un JSON, con UN solo objeto sin []
+
+El procedimiento debe poder controlar excepciones (Errores).
+
+8.) Hacer commit al repositorio de todos los cambios realizados en una NUEVA rama con su nombre.
+
+9.) Clonar el repositorio de pruebaApi. Crear un servicio web que retorne una arreglo de objetos, la estructura debe ser Nombre, Apellido, Telefono.
+Utilizar interfaz, inyección de dependencias.
+Dividir el servicio en sus respectivas capas Controlador, Interfaz y Servicio.
+Hacer commit de los cambios del api en una nueva rama con su Nombre.
