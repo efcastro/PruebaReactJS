@@ -1,4 +1,4 @@
-Nota: Se recomienda utilizar MUI (Material UI). 
+Nota: Se recomienda utilizar MUI (Material UI) y agregar algo de estilos con Tailwindcss o .css puro. Ambas librerías ya están instaladas.
 
 1.) Crear una nueva pantalla en la carpeta pages. Debe estar estructurada de la siguiente forma: 
 La raiz de la pantalla debe solo contener las bases de la misma y hacer llamado a un componente (explicado en el punto 2)
