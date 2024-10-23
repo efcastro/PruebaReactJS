@@ -3,7 +3,7 @@ Nota: Se recomienda utilizar MUI (Material UI) y agregar algo de estilos con Tai
 1.) Crear una nueva pantalla en la carpeta pages. Debe estar estructurada de la siguiente forma: 
 La raiz de la pantalla debe solo contener las bases de la misma y hacer llamado a un componente (explicado en el punto 2)
 adentro de la misma carpeta la cual contendra la lógica en sí de la pantalla. La raíz de la pantalla
-deberá tener una constante del tipo arreglo de objetos con una estructura similar a [{id: 1, nombre:"Manzana"}, {id: 2, nombre:"Pera"}].
+deberá tener una constante del tipo arreglo de objetos con una estructura similar a 	.
 La constante deberá tener 5 objetos.
 
 2.) Crear un nuevo componente adentro de la misma carpeta. Este componente deberá recibir como prop el 
